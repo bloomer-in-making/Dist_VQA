@@ -1,0 +1,7 @@
+# Tested with Python 3.11, CUDA 12.x
+torch>=2.0
+pennylane>=0.39,<0.40
+pennylane-lightning-gpu>=0.39   # GPU simulator backend ("lightning.gpu"); requires CUDA
+numpy>=1.26,<2.0
+tqdm>=4.65
+PyYAML>=6.0

@@ -1,0 +1,45 @@
+# Phase 2: Per-graph fine-tuning
+
+phases:
+  phase1:
+    task: qaoa
+    config:
+      phase: phase1
+      n: 14
+      p: 16
+      seed: 2025
+      device: cuda
+      weighted: uniform
+      p_range: [0.1, 0.9]
+      learning_rate: 1e-3
+      epoch: 30
+      batch_size: 16
+      train_ratio: 0.8
+      num_graphs: 128
+  phase2:
+    task: qaoa
+    config:
+      phase: phase2
+      n: 10
+      p: 6
+      seed: 2025
+      device: cuda
+      checkpoint_path: null
+      learning_rate: 1e-3
+      num: 16
+      step_per_point: 2000
+      output_dir: pergraph_runs_test_set
+  randinit:
+    task: qaoa
+    config:
+      phase: randinit
+      n: 10
+      p: 6
+      seed: 2025
+      device: cuda
+      checkpoint_path: null
+      learning_rate: 1e-3
+      num: 16
+      step_per_point: 2000
+      output_dir: randinit_continuous_dataset/pergraph_runs_test_set
+

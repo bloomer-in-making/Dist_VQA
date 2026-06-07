@@ -1,0 +1,34 @@
+# XYZ ground-state energy: VoP (variational-output) hypernet with prototype-prior KL
+
+phases:
+  phase1:
+    task: xyz_vop
+    config:
+      phase: phase1
+      qubit: 20
+      seed: 2025
+      gpb: 3
+      device: cuda
+      data_dir: dataset/xyz_ham
+      learning_rate: 1e-3
+      epoch: 30
+      batch_size: 16
+      beta: 0.05
+      use_proto_prior: true
+      K_proto: 5
+      prior_sigma0: 0.1
+  phase2:
+    task: xyz_vop
+    config:
+      phase: phase2
+      qubit: 20
+      seed: 2025
+      gpb: 3
+      device: cuda
+      data_dir: dataset/xyz_ham
+      checkpoint_path: null
+      learning_rate: 1e-3
+      num: 16
+      step_per_point: 2000
+      shots: 2048
+      output_dir: finetune_grad_check
