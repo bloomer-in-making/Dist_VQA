@@ -1,6 +1,6 @@
 # Learning Task-Conditioned Distributional Initializers for Variational Quantum Algorithms
 
-Implementation of a two-phase approach to initialization for variational quantum algorithms (VQAs).
+Implementation of the two-phase initialization approach described in **Learning Task-Conditioned Distributional Initializers for Variational Quantum Algorithms**, presented at **IEEE ICDM 2026** 
 
 In Phase 1, a task-conditioned hypernetwork is meta-trained to predict circuit initialization parameters from task descriptors. In Phase 2, the predicted mean parameters are used as deterministic starting points for per-task circuit optimization.
 
@@ -88,7 +88,7 @@ Phase 2 uses a checkpoint obtained from Phase 1.
 
 ```bash
 python main.py --task xyz --config configs/xyz.yaml --phase phase2 \
-  --set phases.phase2.config.checkpoint_path=<path/to/best.pt>
+  --set phases.phase2.config.checkpoint_path="path/to/best.pt"
 ```
 
 ### Random Initialization Baseline
@@ -126,11 +126,11 @@ CUDA_VISIBLE_DEVICES=0 python main.py --task xyz --config configs/xyz.yaml --pha
 
 ### Running Both Phases
 
-The repository also includes `run.sh`, which supports running Phase 1 followed by Phase 2.
+Set matching model dimensions in both phases before running: `qubit` and `gpb` for XYZ, or `n` and `p` for QAOA.
 
 ```bash
-./run.sh xyz all 2025
-./run.sh qaoa all 2025
+bash run.sh xyz all 2025
+bash run.sh qaoa all 2025
 ```
 
 ## Configuration
